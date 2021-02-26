@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying posts
  *
@@ -7,57 +8,43 @@
  * @package casinos
  */
 
+$image = get_field('casino_imagem');
+$picture = $image['sizes']['large'];
+
+
+
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				casinos_posted_on();
-				casinos_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+<div id="post-<?php the_ID(); ?>" class="relative flex flex-col justify-center w-full min-w-full lg:flex-row lg:h-56 mb-7">
+  <div class="md:flex ">
+    <a href="<?php the_field('casino_link') ?>" title="<?php the_title() ?>" class="relative block w-full h-48 overflow-hidden lg:rounded-bl-2xl lg:h-56 md:w-3/6 ">
 
-	<?php casinos_post_thumbnail(); ?>
+      <img title="" src="<?php echo $picture ?>" class="block object-cover w-full h-full rounded-t-2xl md:rounded-tr-none" alt="" width="360" height="360">
 
-	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'casinos' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+      <?php if (get_field('recomendado')) : ?>
+        <span class="absolute w-24 h-24 tip-recomended" style="background: url('http://localhost/wp/wp-content/themes/casinos/dist/img/tip-recommended.png') center no-repeat;">Recomendado</span>
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'casinos' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
+      <?php endif; ?>
+    </a>
 
-	<footer class="entry-footer">
-		<?php casinos_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+    <!-- site-content -->
+    <div class="w-full h-48 p-5 bg-white lg:h-56 md:rounded-tr-2xl lg:rounded-none ">
+      <h2 class="pb-3 text-2xl font-bold text-gray-800 uppercase">
+        <a href="<?php the_field('casino_link') ?>" title="<?php the_title() ?>"><?php the_title() ?></a>
+      </h2>
+
+      <p class="text-gray-800 "><?php the_field('casino_descricao') ?></p>
+    </div>
+  </div>
+  <!-- site-bonus -->
+  <div class="flex flex-col justify-around px-5 text-center text-white bg-indigo-800 lg:w-96 sm:h-56 lg:rounded-tr-2xl rounded-b-2xl sm:rounded-br-2xl lg:rounded-bl-none py-7">
+    <!-- bonus-prize -->
+    <strong class="text-xl font-light leading-8 text-white uppercase">
+      Bónus
+      <span class="block mt-5 text-5xl font-black leading-8 uppercase"><?php the_field('montante_bonus') ?>€</span>
+    </strong>
+
+    <a href="<?php the_field('casino_link') ?>" title="Abrir conta" class="block py-3 mt-5 text-sm font-bold text-white uppercase duration-150 ease-in-out transform bg-green-400 rounded hover:scale-110 hover:elevation-2 " rel="nofollow">Abrir conta</a>
+  </div>
+</div>
