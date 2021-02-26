@@ -28,23 +28,24 @@
 
 
     <header id="masthead" class="site-header">
-      <div class="site-branding">
+      <div class="site-branding oswald ">
         <?php
         the_custom_logo();
         if (is_front_page() && is_home()) :
         ?>
-          <h1 class="text-center site-title text-7xl"><?php bloginfo('name'); ?></h1>
+        <h1 class="text-center site-title text-7xl text-white"><?php bloginfo('name'); ?></h1>
         <?php
         else :
         ?>
-          <p class="text-center site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-          </p>
+        <p class="text-center site-title"><a href="<?php echo esc_url(home_url('/')); ?>"
+            rel="home"><?php bloginfo('name'); ?></a>
+        </p>
         <?php
         endif;
         $casinos_description = get_bloginfo('description', 'display');
         if ($casinos_description || is_customize_preview()) :
         ?>
-          <p class="text-center site-description"><?php echo $casinos_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        <p class="text-center site-description"><?php echo $casinos_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                   ?></p>
         <?php endif; ?>
       </div><!-- .site-branding -->

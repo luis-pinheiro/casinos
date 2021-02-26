@@ -152,6 +152,8 @@ add_action('widgets_init', 'casinos_widgets_init');
  */
 function casinos_scripts()
 {
+	wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@700&family=Raleway:wght@400;600&display=swap', false);
+
 	wp_enqueue_style('casinos-style', get_template_directory_uri() . '/dist/css/style.css');
 	wp_style_add_data('casinos-style', 'rtl', 'replace');
 
@@ -189,3 +191,173 @@ require get_template_directory() . '/inc/customizer.php';
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * ACF Custom Post Fields
+ */
+if (function_exists('acf_add_local_field_group')) :
+
+	acf_add_local_field_group(array(
+		'key' => 'group_6037d25224d6b',
+		'title' => 'Casino Posts',
+		'fields' => array(
+			array(
+				'key' => 'field_6037d27d7b73f',
+				'label' => 'Casino Link',
+				'name' => 'casino_link',
+				'type' => 'url',
+				'instructions' => 'Por aqui o link para o casino',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_6037e3691d136',
+				'label' => 'Casino Imagem',
+				'name' => 'casino_imagem',
+				'type' => 'image',
+				'instructions' => 'Adionar imagem do casino',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
+				'library' => 'uploadedTo',
+				'min_width' => '',
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+			),
+			array(
+				'key' => 'field_6037e9e8d5d48',
+				'label' => 'Casino Descrição',
+				'name' => 'casino_descricao',
+				'type' => 'textarea',
+				'instructions' => 'Escrever aqui a descrição do casino',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'maxlength' => '',
+				'rows' => '',
+				'new_lines' => '',
+			),
+			array(
+				'key' => 'field_6037eb7624bc3',
+				'label' => 'Ratings',
+				'name' => 'ratings',
+				'type' => 'range',
+				'instructions' => 'Adicionar o valor do rating de 1 a 10',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'min' => '',
+				'max' => 10,
+				'step' => '',
+				'prepend' => '',
+				'append' => '',
+			),
+			array(
+				'key' => 'field_6037ee8a6f57d',
+				'label' => 'Review Link',
+				'name' => 'review_link',
+				'type' => 'url',
+				'instructions' => 'Link para reviews',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_6037ef2f952ee',
+				'label' => 'Montante Bonus',
+				'name' => 'montante_bonus',
+				'type' => 'number',
+				'instructions' => 'Adicionar valor do bonus',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => '',
+				'max' => '',
+				'step' => '',
+			),
+			array(
+				'key' => 'field_6037f12ad7506',
+				'label' => 'Recomendado?',
+				'name' => 'recomendado',
+				'type' => 'checkbox',
+				'instructions' => 'Selecionar se recomenda este casino',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'Sim' => 'Sim',
+				),
+				'allow_custom' => 0,
+				'default_value' => array(),
+				'layout' => 'vertical',
+				'toggle' => 0,
+				'return_format' => 'value',
+				'save_custom' => 0,
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+
+endif;

@@ -17,9 +17,9 @@ get_header();
 ?>
 
 <main id="primary" class="container mx-auto site-main">
-	<h1 class="bg-green-400">Page.php</h1>
+  <h1 class="bg-green-400">Page.php</h1>
 
-	<?php
+  <?php
 	while (have_posts()) :
 		the_post();
 
@@ -30,5 +30,4 @@ get_header();
 
 	endwhile; // End of the loop.
 	?>
-
 </main><!-- #main -->

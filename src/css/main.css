@@ -13,6 +13,17 @@
 body {
   @apply debug-screens;
 }
+.lato {
+  font-family: 'Lato', sans-serif;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.oswald {
+  font-family: 'Oswald', sans-serif;
+}
 
 /*!
 Theme Name: casinos

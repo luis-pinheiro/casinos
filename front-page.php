@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The main template file
+ *
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -17,6 +17,7 @@ get_header();
 ?>
 
 <main id="" class="container mx-auto">
+
 
 
   <?php
@@ -45,8 +46,9 @@ get_header();
 
 
 	endif;
-	?>
 
-  <?php get_footer() ?>
+
+
+	?>
 
 </main><!-- #main -->
